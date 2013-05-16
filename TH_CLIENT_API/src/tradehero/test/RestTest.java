@@ -1,4 +1,4 @@
-package tradhero.test;
+package tradehero.test;
 
 import java.util.List;
 
