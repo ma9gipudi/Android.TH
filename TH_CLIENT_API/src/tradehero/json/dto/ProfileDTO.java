@@ -1,4 +1,4 @@
-package tradehero.json;
+package tradehero.json.dto;
 
 public  class ProfileDTO {
 
@@ -13,4 +13,6 @@ public  class ProfileDTO {
 	}
 	
 	public String email;
+	public String displayName;
+	public String firstName;
 }

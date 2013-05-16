@@ -1,4 +1,5 @@
-package tradehero.json;
+package tradehero.json.dto;
+
 
 public class RootClass {
 

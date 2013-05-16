@@ -5,7 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.X509Certificate;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -19,10 +27,13 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+
 
 
 public class RestClient {
@@ -97,6 +108,8 @@ public class RestClient {
                     request.addHeader(h.getName(), h.getValue());
                 }
 
+                addAuthHeader(request,email,password);
+                addAcceptHeader(request);
                 executeRequest(request, url);
                 break;
             }
@@ -134,11 +147,36 @@ public class RestClient {
 		Header bs = new BasicScheme().authenticate(creds, request);
 		request.addHeader(bs);
 	}
+	
+	private void addAuthHeader(HttpGet request,String email,String password) throws AuthenticationException {
+		//UsernamePasswordCredentials creds = new UsernamePasswordCredentials("grimaultjulien@gmail.com", "123123");
+		UsernamePasswordCredentials creds = new UsernamePasswordCredentials(email, password);
+		Header bs = new BasicScheme().authenticate(creds, request);
+		request.addHeader(bs);
+	}
+	
+	private void addAcceptHeader(HttpGet request)
+	{
+		request.addHeader("ACCEPT", "application/Json");
+	}
+
 
     private void executeRequest(HttpUriRequest request, String url)
     {
-        HttpClient client = new DefaultHttpClient();
+      
         
+    	/**** only in Development */
+    	DefaultHttpClient client = null;
+    	//HttpClient client = new DefaultHttpClient();
+		try {
+			client = httpClientTrustingAllSSLCerts();
+		} catch (KeyManagementException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
        
         
         HttpResponse httpResponse;
@@ -188,5 +226,53 @@ public class RestClient {
             }
         }
         return sb.toString();
+    }
+    
+    private DefaultHttpClient httpClientTrustingAllSSLCerts() throws NoSuchAlgorithmException, KeyManagementException {
+        DefaultHttpClient httpclient = new DefaultHttpClient();
+
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, getTrustingManager(), new java.security.SecureRandom());
+
+        SSLSocketFactory socketFactory = new SSLSocketFactory(sc);
+        Scheme sch = new Scheme("https", 443, socketFactory);
+        httpclient.getConnectionManager().getSchemeRegistry().register(sch);
+        return httpclient;
+    }
+
+    private TrustManager[] getTrustingManager() {
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return null;
+            }
+
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                // Do nothing
+            }
+
+ 
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                // Do nothing
+            }
+
+			@Override
+			public void checkClientTrusted(
+					java.security.cert.X509Certificate[] arg0, String arg1)
+					throws CertificateException {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void checkServerTrusted(
+					java.security.cert.X509Certificate[] arg0, String arg1)
+					throws CertificateException {
+				// TODO Auto-generated method stub
+				
+			}
+
+        } };
+        return trustAllCerts;
     }
 }
