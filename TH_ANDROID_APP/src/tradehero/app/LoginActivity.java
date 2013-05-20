@@ -13,7 +13,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
 	private LoginActivity loginActivity ;
 	@Override

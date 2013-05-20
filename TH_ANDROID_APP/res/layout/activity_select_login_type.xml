@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sign in with"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textColor="#c1beca"
+            android:layout_marginTop="70dp"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook"
+            android:id="@+id/facebookLoginButton"
+            android:background="#2156ce"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="4dp"
+            android:textColor="#ffffff"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Twitter"
+            android:id="@+id/twitterLoginButton"
+            android:background="#56cbff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:textColor="#ffffff"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="LinkedIn"
+            android:id="@+id/linkedinLoginButton"
+            android:background="#0680ff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:textColor="#ffffff"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="or sign in with an email adress"
+            android:id="@+id/emailLoginButton"
+            android:background="#ffffff"
+            android:textSize="10dp"
+            android:onClick="onEmailLoginClick"
+            android:textColor="#1f5cff"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/respect"
+            android:id="@+id/textView2"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="100dp"/>
+
+</LinearLayout>
