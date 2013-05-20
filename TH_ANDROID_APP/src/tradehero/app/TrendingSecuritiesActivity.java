@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class TrendingSecuritiesActivity extends Activity {
+public class TrendingSecuritiesActivity extends BaseActivity {
 
 	private TrendingSecuritiesActivity trendingSecuritiesActivity = null;
 	@Override

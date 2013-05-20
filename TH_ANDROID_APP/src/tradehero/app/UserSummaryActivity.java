@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-public class UserSummaryActivity extends Activity {
+public class UserSummaryActivity extends BaseActivity {
 
 	private UserSummaryActivity userSummaryActivity = null;
 	private User user = null;

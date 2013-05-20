@@ -22,21 +22,33 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int th_banner=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
-        public static final int loginButton=0x7f080002;
-        public static final int loginEmail=0x7f080000;
-        public static final int loginPassword=0x7f080001;
-        public static final int textView1=0x7f080004;
-        public static final int trendingButton=0x7f080005;
-        public static final int userEmail=0x7f080003;
+        public static final int action_settings=0x7f080010;
+        public static final int emailLoginButton=0x7f08000b;
+        public static final int existingUserButton=0x7f080002;
+        public static final int facebookLoginButton=0x7f080008;
+        public static final int imageView=0x7f080000;
+        public static final int linkedinLoginButton=0x7f08000a;
+        public static final int loginButton=0x7f080006;
+        public static final int loginEmail=0x7f080004;
+        public static final int loginPassword=0x7f080005;
+        public static final int newUserButton=0x7f080001;
+        public static final int textView=0x7f080007;
+        public static final int textView1=0x7f08000e;
+        public static final int textView2=0x7f08000c;
+        public static final int trendingButton=0x7f08000f;
+        public static final int twitterLoginButton=0x7f080009;
+        public static final int userEmail=0x7f08000d;
+        public static final int versionNumber=0x7f080003;
     }
     public static final class layout {
-        public static final int activity_login=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_trending_securities=0x7f030002;
-        public static final int activity_user_summary=0x7f030003;
+        public static final int activity_initial=0x7f030000;
+        public static final int activity_login=0x7f030001;
+        public static final int activity_select_login_type=0x7f030002;
+        public static final int activity_trending_securities=0x7f030003;
+        public static final int activity_user_summary=0x7f030004;
     }
     public static final class menu {
         public static final int login=0x7f070000;
@@ -45,12 +57,27 @@ public final class R {
         public static final int user_summary=0x7f070003;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
+        public static final int action_forgot_password=0x7f05000c;
+        public static final int action_settings=0x7f050002;
+        public static final int action_sign_in_register=0x7f05000a;
+        public static final int action_sign_in_short=0x7f05000b;
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
-        public static final int title_activity_login=0x7f050003;
-        public static final int title_activity_trending_securities=0x7f050005;
-        public static final int title_activity_user_summary=0x7f050004;
+        public static final int app_version=0x7f050001;
+        public static final int error_field_required=0x7f050011;
+        public static final int error_incorrect_password=0x7f050010;
+        public static final int error_invalid_email=0x7f05000e;
+        public static final int error_invalid_password=0x7f05000f;
+        public static final int existing_user=0x7f050007;
+        public static final int hello_world=0x7f050003;
+        public static final int login_progress_signing_in=0x7f05000d;
+        /**  Strings related to login 
+         */
+        public static final int prompt_email=0x7f050008;
+        public static final int prompt_password=0x7f050009;
+        public static final int respect=0x7f050012;
+        public static final int title_activity_login=0x7f050004;
+        public static final int title_activity_trending_securities=0x7f050006;
+        public static final int title_activity_user_summary=0x7f050005;
     }
     public static final class style {
         /** 
